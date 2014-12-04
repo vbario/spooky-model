@@ -1,0 +1,23 @@
+{
+  "name": "spooky-model",
+  "version": "1.0.0",
+  "description": "A scary model manager, with language support, for the spooky framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxtherocket/spooky-model.git"
+  },
+  "author": "Max Rusan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maxtherocket/spooky-model/issues"
+  },
+  "homepage": "https://github.com/maxtherocket/spooky-model",
+  "dependencies": {
+    "signals": "~1.0.0",
+    "traverse": "~0.6.6"
+  }
+}
