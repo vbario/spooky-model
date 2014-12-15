@@ -22,7 +22,6 @@ function localizeModel(obj, lang) {
 var contentCache = {};
 
 var cacheContent = function(content, modelID){
-    console.log('this.language: ', this.language);
     if (this.language){
         if (!contentCache[modelID]) contentCache[modelID] = {};
         contentCache[modelID][this.language] = content;

@@ -1,6 +1,6 @@
 {
   "name": "spooky-model",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A scary model manager, with language support, for the spooky framework.",
   "main": "index.js",
   "scripts": {
