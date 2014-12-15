@@ -19,6 +19,29 @@ function localizeModel(obj, lang) {
     });
 }
 
+var contentCache = {};
+
+var cacheContent = function(content, modelID){
+    console.log('this.language: ', this.language);
+    if (this.language){
+        if (!contentCache[modelID]) contentCache[modelID] = {};
+        contentCache[modelID][this.language] = content;
+    } else {
+        contentCache[modelID] = content;
+    }
+}
+
+var getCachedContent = function(modelID){
+    if (this.language){
+        if (contentCache[modelID] && contentCache[modelID][this.language]){
+            return contentCache[modelID][this.language];
+        }
+    } else {
+        return this.data[modelID];
+    }
+    return null;
+}
+
 var SpookyModel = {
 
     onLanguageChanged: new Signal(),
@@ -27,6 +50,7 @@ var SpookyModel = {
         if (lang){
             this.language = lang;
         }
+        contentCache = {};
         this.data = data;
     },
 
@@ -37,12 +61,18 @@ var SpookyModel = {
 
     getContent: function(modelID){
         if (!this.data) return null;
-        var data = this.data[modelID];
-        if (this.language){
-            return localizeModel(data, this.language);
-        } else {
-            return data;
+        var checkCachedContent = getCachedContent.call(this, modelID);
+        if (checkCachedContent){
+            return checkCachedContent;
         }
+        var content = null;
+        if (this.language){
+            content = localizeModel(this.data[modelID], this.language);
+        } else {
+            content = this.data[modelID];
+        }
+        cacheContent.call(this, content, modelID);
+        return content;
     }
 
 }
