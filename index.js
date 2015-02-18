@@ -6,7 +6,7 @@ function localize(obj, lang) {
         return obj.map(function(e) {
             return localize(e, lang);
         });
-    } else if (typeof obj === 'object' && lang in obj) {
+    } else if (typeof obj === 'object' && obj !== null && lang in obj) {
         return obj[lang];
     } else {
         return obj;
