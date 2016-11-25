@@ -72,6 +72,11 @@ var SpookyModel = {
         }
         cacheContent.call(this, content, modelID);
         return content;
+    },
+
+    get: function(path) {
+        var _ = require('lodash/object');
+        return _.get(this.data, path, 'default');
     }
 
 }
