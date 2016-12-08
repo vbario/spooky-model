@@ -52,6 +52,7 @@ var SpookyModel = {
         }
         contentCache = {};
         this.data = data;
+        this.onLanguageChanged.dispatch(lang);
     },
 
     setLanguage: function(lang){
